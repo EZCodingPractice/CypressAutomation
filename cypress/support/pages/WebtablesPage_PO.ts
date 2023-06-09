@@ -1,7 +1,6 @@
 /// <reference types="cypress"/>
-
 import BasePage_PO from './BasePage_PO'
-import { User, PersonData } from '../../e2e/model.d'
+import { PersonData } from '../../e2e/model.d'
 
 class Webtables_PO extends BasePage_PO {
 	private firstname: string = '#firstName'
@@ -117,8 +116,9 @@ class Webtables_PO extends BasePage_PO {
 
 	addNewRecord() {
 		this.addNewRecordButtonElement.click()
-		
+
 		cy.fixture('user.json').as('testUser')
+		// user1 refers to the object which content is of type PersonData
 		cy.get<{ user1: PersonData }>('@testUser').then((testData) => {
 			console.log(testData.user1.firstName)
 			const columnNames: string[] = Object.keys(testData.user1)
@@ -128,7 +128,8 @@ class Webtables_PO extends BasePage_PO {
 			})
 			this.submitButtonElement.click()
 
-			this.webtableTbodyElement.contains(this.webtableRtTrGroup, testData.user1.firstName)
+			this.webtableTbodyElement
+				.contains(this.webtableRtTrGroup, testData.user1.firstName)
 				.then((row) => {
 					cy.wrap(userData).each((value, index) => {
 						cy.wrap(row).find(this.webtableCell).eq(index).should('contain', value)

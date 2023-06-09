@@ -1,5 +1,5 @@
-/// <reference types="cypress" />
-import BasePage_PO from '../support/pages/BasePage_PO'
+/// <reference types="cypress"/>
+import BasePage_PO from 'cypress/support/pages/BasePage_PO'
 import MultipleButtonsPage_PO from '../support/pages/MultipleButtonsPage_PO'
 
 const basePage = new BasePage_PO()

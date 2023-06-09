@@ -1,6 +1,5 @@
 /// <reference types="cypress"/>
 import Webtables_PO from '../support/pages/WebtablesPage_PO'
-import { PersonData } from '../e2e/model'
 
 const webtablesPage = new Webtables_PO()
 
