@@ -1,0 +1,14 @@
+{
+    "login": {
+        "username": "tomsmith",
+        "password": "SuperSecretPassword"
+    },
+    "registration": {
+        "firstname": "Mike",
+        "lastname": "Brown",
+        "username": "CrazyHeart",
+        "password": "crazybrown123",
+        "phoneNumber": "786-542-3562",
+        "birthday": "01/01/1980"
+    }
+}
