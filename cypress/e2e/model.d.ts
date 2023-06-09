@@ -19,3 +19,25 @@ export interface Registration {
 export interface Login {
 	login: LoginData
 }
+
+export interface User {
+	firstName: string
+	lastName: string
+	age: string
+	userEmail: string
+	salary: string
+	department: string
+}
+
+export interface PersonData {
+	firstName: string
+	lastName: string
+	age: string
+	userEmail: string
+	salary: string
+	department: string
+}
+
+export interface Person {
+	user1: PersonData
+}

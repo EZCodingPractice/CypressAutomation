@@ -4,9 +4,7 @@ import BasePage_PO from './BasePage_PO'
 
 class FileUpload_PO extends BasePage_PO {
 	private fileUploadInput: string = 'input#file-upload'
-
 	private uploadButton: string = '#file-submit'
-
 	private uploadedFilesHeader: string = '#uploaded-files'
 
 	get fileUploadInputElement(): Cypress.Chainable<JQuery<HTMLElement>> {

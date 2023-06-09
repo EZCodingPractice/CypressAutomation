@@ -5,29 +5,17 @@ import BasePage_PO from './BasePage_PO'
 class RegistrationForm_PO extends BasePage_PO {
 	/** LOCATORS */
 	private firstNameField: string = "[data-bv-field='firstname']"
-
 	private lastNameField: string = "[data-bv-field='lastname']"
-
 	private usernameField: string = "[data-bv-field='username']"
-
 	private emailField: string = "[data-bv-field='email']"
-
 	private passwordField: string = "[data-bv-field='password']"
-
 	private phoneField: string = "[data-bv-field='phone']"
-
 	private birthdayField: string = "[data-bv-field='birthday']"
-
 	private radioButtons: string = '.radio'
-
 	private radioButtonByType: string = '[type=radio]'
-
 	private formControlStatusCheck: string = "[data-bv-icon-for='gender']"
-
 	private checkboxes: string = '[type="checkbox"]'
-
 	private departmentOptions: string = "select[name='department']"
-
 	private jobTitleOptions: string = "select[name='job_title']"
 
 	/** GETTERS */

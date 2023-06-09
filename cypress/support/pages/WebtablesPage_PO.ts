@@ -1,27 +1,20 @@
 /// <reference types="cypress"/>
 
 import BasePage_PO from './BasePage_PO'
+import { User, PersonData } from '../../e2e/model.d'
 
 class Webtables_PO extends BasePage_PO {
 	private firstname: string = '#firstName'
-
 	private lastname: string = '#lastName'
-
 	private submitButton: string = '#submit'
-
 	private webtableTbody: string = '.rt-tbody'
-
 	private webtableRtTrGroup: string = '.rt-tr-group'
-
-	private webtableRow: string = '.rt-td'
-
+	private webtableCell: string = '.rt-td'
 	private editButton: string = '[title=Edit]'
-
 	private searchBox: string = '#searchBox'
-
 	private noDataMessage: string = '.rt-noData'
-
 	private deleteButton: string = '[title=Delete]'
+	private addNewRecordButton: string = '#addNewRecordButton'
 
 	get firstnameElement(): Cypress.Chainable<JQuery<HTMLElement>> {
 		return cy.get(this.firstname)
@@ -47,8 +40,8 @@ class Webtables_PO extends BasePage_PO {
 		return cy.get(this.editButton)
 	}
 
-	get webtableRowElement(): Cypress.Chainable<JQuery<HTMLElement>> {
-		return cy.get(this.webtableRow)
+	get webtableCellElement(): Cypress.Chainable<JQuery<HTMLElement>> {
+		return cy.get(this.webtableCell)
 	}
 
 	get searchBoxElement(): Cypress.Chainable<JQuery<HTMLElement>> {
@@ -63,6 +56,10 @@ class Webtables_PO extends BasePage_PO {
 		return cy.get(this.deleteButton)
 	}
 
+	get addNewRecordButtonElement(): Cypress.Chainable<JQuery<HTMLElement>> {
+		return cy.get(this.addNewRecordButton)
+	}
+
 	verifyAndEditRecord(firstname: string, newName: string, newLastname: string) {
 		this.webtableTbodyElement.contains(this.webtableRtTrGroup, firstname).then((row) => {
 			// click on the Edit button for the firstname record
@@ -72,8 +69,8 @@ class Webtables_PO extends BasePage_PO {
 			this.lastnameElement.clear().type(newLastname)
 			this.submitButtonElement.click()
 			// validate new person info
-			cy.wrap(row).find(this.webtableRow).eq(0).should('contain', newName)
-			cy.wrap(row).find(this.webtableRow).eq(1).should('contain', newLastname)
+			cy.wrap(row).find(this.webtableCell).eq(0).should('contain', newName)
+			cy.wrap(row).find(this.webtableCell).eq(1).should('contain', newLastname)
 		})
 	}
 
@@ -115,6 +112,28 @@ class Webtables_PO extends BasePage_PO {
 					.contains(this.webtableRtTrGroup, age)
 					.should('have.length', 1)
 			}
+		})
+	}
+
+	addNewRecord() {
+		this.addNewRecordButtonElement.click()
+		
+		cy.fixture('user.json').as('testUser')
+		cy.get<{ user1: PersonData }>('@testUser').then((testData) => {
+			console.log(testData.user1.firstName)
+			const columnNames: string[] = Object.keys(testData.user1)
+			const userData: string[] = Object.values(testData.user1)
+			cy.wrap(columnNames).each((columnName: string, index: number) => {
+				cy.get(`#${columnName}`).type(`${userData[index]}`)
+			})
+			this.submitButtonElement.click()
+
+			this.webtableTbodyElement.contains(this.webtableRtTrGroup, testData.user1.firstName)
+				.then((row) => {
+					cy.wrap(userData).each((value, index) => {
+						cy.wrap(row).find(this.webtableCell).eq(index).should('contain', value)
+					})
+				})
 		})
 	}
 }

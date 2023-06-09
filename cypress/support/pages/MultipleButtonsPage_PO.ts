@@ -2,9 +2,7 @@
 
 class MultipleButtonsPage_PO {
 	private result: string = 'p#result'
-
 	private buttonsByClass: string = '.btn.btn-primary'
-
 	private buttons: string = 'button'
 
 	get resultElement(): Cypress.Chainable<JQuery<HTMLElement>> {

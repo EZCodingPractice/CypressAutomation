@@ -2,15 +2,10 @@
 
 class LoginPage_PO {
 	private usernameField: string = "input[name='username']"
-
 	private passwordField: string = "input[name='password']"
-
 	private loginButton: string = '#wooden_spoon'
-
 	private inputFields: string = 'input'
-
 	private logoutButton: string = "a[href$='logout']"
-
 	private formLoginButton: string = 'form button'
 
 	get usernameFieldElement(): Cypress.Chainable<JQuery<HTMLElement>> {

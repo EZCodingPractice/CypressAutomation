@@ -1,0 +1,18 @@
+{
+    "user1": {
+        "firstName": "Harvey",
+        "lastName": "Specter",
+        "age": "40",
+        "userEmail": "specter@example.com",
+        "salary": "70000",
+        "department": "legal"
+    },
+    "user2": {
+        "firstName": "Tom",
+        "lastName": "Collins",
+        "age": "30",
+        "userEmail": "collins@example.com",
+        "salary": "80000",
+        "department": "paralegal"
+    }
+}
