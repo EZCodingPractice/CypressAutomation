@@ -40,9 +40,11 @@
         "@typescript-eslint/semi": ["error", "never"],
         "lines-between-class-members": "off",
         "@typescript-eslint/no-inferrable-types": 0,
+        "indent": ["error", "tab"],
         "prettier/prettier": ["error", {
             "semi": false,
-            "endOfLine": "auto"
+            "endOfLine": "auto",
+            "useTabs": true
         }],
         "import/extensions": ["error", "never"],
         "import/no-unresolved": [
