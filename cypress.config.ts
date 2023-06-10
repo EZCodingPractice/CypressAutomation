@@ -14,6 +14,9 @@ export default defineConfig({
 			return config
 		},
 		env: {
+			login: '/login',
+			apiUrl: 'https://demoqa.com',
+			apiBookstore: '/BookStore/v1/Books',
 			allureReuseAfterSpec: true,
 			allureResultsPath: 'reports',
 			allureAttachRequests: true,

@@ -9,11 +9,11 @@ class LoginPage_PO {
 	private formLoginButton: string = 'form button'
 
 	get usernameFieldElement(): Cypress.Chainable<JQuery<HTMLElement>> {
-		return cy.get(this.usernameField)
+		return cy.get(this.usernameField, { timeout: 5000 })
 	}
 
 	get passwordFieldElement(): Cypress.Chainable<JQuery<HTMLElement>> {
-		return cy.get(this.passwordField)
+		return cy.get(this.passwordField, { timeout: 5000 })
 	}
 
 	get loginButtonElement(): Cypress.Chainable<JQuery<HTMLElement>> {
@@ -58,6 +58,10 @@ class LoginPage_PO {
 			expect(buttonElement).to.have.text('Login')
 			expect(buttonElement).to.have.class('btn btn-primary')
 		})
+	}
+
+	verifyTextExists(text: string) {
+		cy.textExists(text)
 	}
 }
 

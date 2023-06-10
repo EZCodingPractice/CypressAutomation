@@ -36,8 +36,31 @@ export interface PersonData {
 	userEmail: string
 	salary: string
 	department: string
+	username?: string
+	password?: string
+}
+
+export interface LoginInfo {
+	username: string
+	password: string
 }
 
 export interface Person {
 	user1: PersonData
+}
+
+interface BookInfo {
+	isbn: string
+	title: string
+	subTitle: string
+	author: string
+	publish_date: string
+	publisher: string
+	pages: number
+	description: string
+	website: string
+}
+
+interface BookTitle {
+	[index: number]: string
 }

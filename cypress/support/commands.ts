@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import LoginPage_PO from './pages/LoginPage_PO'
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -36,3 +37,24 @@
 //   }
 // }
 import 'cypress-file-upload'
+
+declare global {
+	namespace Cypress {
+		interface Chainable {
+			textExists(text: string): Chainable<void>
+			login(username: string, password: string): Chainable<void>
+		}
+	}
+}
+
+const loginPage = new LoginPage_PO()
+
+Cypress.Commands.add('textExists', (text) => {
+	cy.contains(`${text}`).should('exist').and('contain', `${text}`).and('be.visible')
+})
+
+Cypress.Commands.add('login', (username: string, password: string) => {
+	loginPage.typeUsername(username)
+	loginPage.typePassword(password)
+	loginPage.clickLoginButton()
+})

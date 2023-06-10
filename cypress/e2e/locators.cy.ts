@@ -15,7 +15,7 @@ describe('Find or get elements by using different locators', () => {
 		basePage.navigateTo('/login')
 	})
 
-	it('Check different locators strategies', () => {
+	it('PAGE OBJECT - Check different locators strategies', () => {
 		/** PAGE OBJECT : loginPage */
 		cy.get<Login>('@testData').then((testData) => {
 			loginPage.typeUsername(testData.login.username)
